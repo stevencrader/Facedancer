@@ -91,6 +91,9 @@ ENV/
 .ropeproject
 tags
 
+# IDE project folder
+/.idea/
+
 # Release files
 VERSION
 release-files

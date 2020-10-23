@@ -5,8 +5,7 @@
 #
 """ Example template for creating new FaceDancer devices. """
 
-import logging
-
+from facedancer         import logger
 from facedancer         import main
 from facedancer.future  import *
 from facedancer.classes import USBDeviceClass
@@ -52,7 +51,7 @@ class TemplateDevice(USBDevice):
     # This tuple is a list of languages we're choosing to support.
     # This gives us an opportunity to provide strings in various languages.
     # We don't typically use this; so we can leave this set to a language of
-    # your choice. 
+    # your choice.
     supported_langauges      : tuple = (LanguageIDs.ENGLISH_US,)
 
     # The revision of the device hardware. This doesn't matter to the USB specification,
@@ -67,7 +66,7 @@ class TemplateDevice(USBDevice):
     #
     # We'll define a single configuration on our device. To be compliant,
     # every device needs at least a configuration and an interface.
-    # 
+    #
     # Note that we don't need to do anything special to have this be used.
     # As long as we're using the @use_inner_classes_automatically decorator,
     # this configuration will automatically be instantiated and used.
@@ -183,7 +182,7 @@ class TemplateDevice(USBDevice):
                 # This one is called whenever data is sent to this endpoint.
                 #
                 def handle_data_received(self, data):
-                    logging.info(f"Received data: {data}")
+                    logger.info(f"Received data: {data}")
 
 
     #
@@ -239,7 +238,7 @@ class TemplateDevice(USBDevice):
     @vendor_request_handler(number=1, direction=USBDirection.OUT)
     @to_device
     def handle_another_request(self, request):
-        
+
         #
         # Another set of convenience decorators exist to refine requests.
         # Decorators like `to_device` or `to_any_endpoint` chain with our
